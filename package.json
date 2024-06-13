@@ -134,7 +134,7 @@
     "node-2fa": "1.1.2",
     "node-cache": "5.1.2",
     "nodemailer": "6.9.1",
-    "objection": "3.1.4",
+    "objection": "2.2.18",
     "passport": "0.4.1",
     "passport-auth0": "1.4.3",
     "passport-azure-ad": "4.3.4",
@@ -343,7 +343,8 @@
     "kind-of" : "6.0.3",
     "json5" : "2.2.2",
     "graphql-tools" : "6.2.6",
-    "busboy" : "1.6.0"
+    "busboy" : "1.6.0",
+    "objection": "2.2.18"
   },
   "browserslist": [
     "> 1%",
