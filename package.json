@@ -1,7 +1,7 @@
 {
   "name": "wiki",
   "version": "2.5.303-patch",
-  "releaseDate": "2019-01-01T01:01:01.000Z",
+  "releaseDate": "2024-06-14T01:01:01.000Z",
   "description": "A modern, lightweight and powerful wiki app built on NodeJS, Git and Markdown",
   "main": "wiki.js",
   "dev": false,
@@ -80,7 +80,7 @@
     "express": "4.19.2",
     "express-brute": "1.0.1",
     "express-session": "1.17.3",
-    "file-type": "15.0.1",
+    "file-type": "16.5.4",
     "filesize": "6.1.0",
     "fs-extra": "9.0.1",
     "getos": "3.2.1",
@@ -349,7 +349,8 @@
     "node-uuid" : "1.4.8",
     "passport-oauth2" : "1.6.1",
     "ws" : "7.5.9",
-    "xml2js" : "0.6.2"
+    "xml2js" : "0.6.2",
+    "braces" : "3.0.3"
   },
   "browserslist": [
     "> 1%",
