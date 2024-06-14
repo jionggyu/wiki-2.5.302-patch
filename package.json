@@ -4,7 +4,7 @@
   "releaseDate": "2019-01-01T01:01:01.000Z",
   "description": "A modern, lightweight and powerful wiki app built on NodeJS, Git and Markdown",
   "main": "wiki.js",
-  "dev": true,
+  "dev": false,
   "scripts": {
     "start": "node server",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider node dev",
@@ -343,7 +343,6 @@
     "kind-of" : "6.0.3",
     "json5" : "2.2.2",
     "graphql-tools" : "6.2.6",
-    "busboy" : "1.6.0",
     "objection": "2.2.18",
     "tar" : "6.2.1",
     "highlight.js": "10.4.1",
@@ -351,7 +350,6 @@
     "passport-oauth2" : "1.6.1",
     "ws" : "7.5.9",
     "xml2js" : "0.6.2"
-
   },
   "browserslist": [
     "> 1%",
