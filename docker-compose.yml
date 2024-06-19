@@ -1,13 +1,12 @@
 version: "3"
 
 services:
-
   wikidb:
     image: postgres:15-alpine
     environment:
-      POSTGRES_DB: wiki
-      POSTGRES_PASSWORD: wikijsrocks
-      POSTGRES_USER: wikijs
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
     networks:
       - wikigit
     logging:
@@ -15,37 +14,82 @@ services:
     restart: unless-stopped
     volumes:
       - ./data:/var/lib/postgresql/data
-      
 
   wiki:
     image: jionggyu/starchart:0.9
     depends_on:
       - wikidb
     environment:
-      DB_TYPE: postgres
-      DB_HOST: wikidb
-      DB_PORT: 5432
-      DB_USER: wikijs
-      DB_PASS: wikijsrocks
-      DB_NAME: wiki
+      DB_TYPE: ${DB_TYPE}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    volumes:
+      - ./data/favicons:/wiki/assets/favicons
+      - ./data/favicon:/wiki/assets  
     networks:
       - wikigit
     restart: unless-stopped
     ports:
       - "3000:3000"
 
-  # wikiadminer:
+  server:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      USER_UID: ${USER_UID}
+      USER_GID: ${USER_GID}
+      GITEA__database__DB_TYPE: ${GT_DB_TYPE}
+      GITEA__database__HOST: ${GT_DB_HOST}
+      GITEA__database__NAME: ${GT_DB_NAME}
+      GITEA__database__USER: ${GT_DB_USER}
+      GITEA__database__PASSWD: ${GT_DB_PASSWD}
+    restart: always
+    networks:
+      - gitea
+      - wikigit
+    volumes:
+      - ./!gitea-service/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3001:3000"
+      - "222:22" # SSH
+    depends_on:
+      - gitdb
+
+  gitdb:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${GT_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${GT_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${GT_POSTGRES_DB}
+    networks:
+      - gitea
+      - wikigit
+    volumes:
+      - ./!gitea-service/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  
+  # gitadminer:
   #   image: adminer
-  #   container_name: wikiadminer
+  #   container_name: gitadminer
   #   restart: always
   #   ports:
-  #     - "8081:8080"  # Changed port mapping to 8081
+  #     - "8080:8080"
   #   networks:
+  #     - gitea
   #     - wikigit
 
 volumes:
   db-data:
 
 networks:
+  gitea:
+    external: false
   wikigit:
     external: true
