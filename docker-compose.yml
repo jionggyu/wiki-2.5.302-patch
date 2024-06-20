@@ -27,8 +27,8 @@ services:
       DB_PASS: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
     volumes:
-      - ./data/favicons:/wiki/assets/favicons
-      - ./data/favicon:/wiki/assets  
+      - ./favicons:/wiki/assets/favicons
+      - ./favicons/favicon.ico:/wiki/assets/favicon.ico
     networks:
       - wikigit
     restart: unless-stopped
