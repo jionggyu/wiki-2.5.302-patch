@@ -59,21 +59,39 @@ services:
     depends_on:
       - gitdb
 
+  # gitdb:
+  #   image: postgres:15-alpine
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${GT_POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${GT_POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${GT_POSTGRES_DB}
+  #   networks:
+  #     - gitea
+  #     - wikigit
+  #   volumes:
+  #     - ./!gitea-service/postgres:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  
+
   gitdb:
-    image: postgres:15-alpine
+    image: bitnami/postgresql:16.3.0
+    container_name: gitea-bitnami-postgres
     restart: always
     environment:
-      POSTGRES_USER: ${GT_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${GT_POSTGRES_PASSWORD}
-      POSTGRES_DB: ${GT_POSTGRES_DB}
+      - POSTGRESQL_USERNAME=${GT_POSTGRES_USER}
+      - POSTGRESQL_PASSWORD=${GT_POSTGRES_PASSWORD}
+      - POSTGRESQL_DATABASE=${GT_POSTGRES_DB}
+
     networks:
       - gitea
       - wikigit
     volumes:
-      - ./!gitea-service/postgres:/var/lib/postgresql/data
+      - ./gitea-service:/bitnami/postgresql
     ports:
       - "5432:5432"
-  
+
   # gitadminer:
   #   image: adminer
   #   container_name: gitadminer
@@ -92,4 +110,4 @@ networks:
   gitea:
     external: false
   wikigit:
-    external: true
+    external: false
