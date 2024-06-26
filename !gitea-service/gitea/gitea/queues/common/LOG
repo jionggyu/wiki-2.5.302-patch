@@ -3141,3 +3141,36 @@
 13:14:02.309288 version@stat F·[0 1] S·540B[0B 540B] Sc·[0.00 0.00]
 13:14:02.337042 db@janitor F·3 G·0
 13:14:02.337205 db@open done T·29.754422ms
+=============== Jun 26, 2024 (UTC) ===============
+03:42:00.037328 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+=============== Jun 26, 2024 (UTC) ===============
+03:42:00.058407 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+03:42:00.060828 table@recovery F·2
+03:42:00.061212 table@recovery recovering @180
+03:42:00.063507 table@recovery recovered @180 Gk·24 Ck·0 Cb·0 S·540 Q·3239
+03:42:00.064225 table@recovery recovering @341
+03:42:00.066650 table@recovery recovered @341 Gk·24 Ck·0 Cb·0 S·542 Q·3257
+03:42:00.067180 table@recovery recovered F·2 N·48 Gk·48 Ck·0 Q·3257
+03:42:00.087894 version@stat F·[2] S·1KiB[1KiB] Sc·[0.50]
+03:42:00.091197 db@open opening
+03:42:00.093304 journal@recovery F·1
+03:42:00.093795 journal@recovery recovering @398
+03:42:00.097454 version@stat F·[2] S·1KiB[1KiB] Sc·[0.50]
+03:42:00.103110 db@janitor F·6 G·0
+03:42:00.103412 db@open done T·11.8418ms
+03:42:08.444036 table@compaction L0·2 -> L1·0 S·1KiB Q·3257
+03:42:08.451487 table@build created L1@400 N·24 S·542B "act..igh,v24":"web..low,v15"
+03:42:08.451927 version@stat F·[0 1] S·542B[0B 542B] Sc·[0.00 0.00]
+03:42:08.455647 table@compaction committed F-1 S-540B Ke·0 D·24 T·11.0722ms
+03:42:08.457536 table@remove removed @341
+03:42:08.459085 table@remove removed @180
+=============== Jun 26, 2024 (UTC) ===============
+06:53:44.365174 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:53:44.375446 version@stat F·[0 1] S·542B[0B 542B] Sc·[0.00 0.00]
+06:53:44.376399 db@open opening
+06:53:44.378942 journal@recovery F·1
+06:53:44.379455 journal@recovery recovering @399
+06:53:44.385022 version@stat F·[0 1] S·542B[0B 542B] Sc·[0.00 0.00]
+06:53:44.417141 db@janitor F·5 G·1
+06:53:44.417500 db@janitor removing manifest-399
+06:53:44.419722 db@open done T·42.9741ms
